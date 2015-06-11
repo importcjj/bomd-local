@@ -1,0 +1,14 @@
+#directory
+/data/
+/data2/
+bin/Auto_push/
+bin/log/
+
+#xml file
+*.xml
+
+#file
+.DS_Store
+
+#python
+*.pyc
