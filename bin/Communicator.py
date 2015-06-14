@@ -35,7 +35,8 @@ from logHelper import *
 
 class Communicator(object):
 
-	UPLOAD_URL = "http://2.bomd.sinaapp.com/upload"
+	# UPLOAD_URL = "http://easybomd.sinaapp.com/upload"
+	UPLOAD_URL = "http://localhost:5000/upload"
 	USERNAME = "cjj"
 	PASWORD = "cjj"
 
@@ -74,7 +75,7 @@ class Communicator(object):
 		"""
 
 		params = {'essay_body':open(essayPath, "rb+"),
-			'essay_title':essayPath.split(os.sep)[-1][:-5],#.strip('.html')
+			'essay_title':essayPath.split(os.sep)[-1].split('.')[0],#.strip('.html')
 			'essay_date': time.strftime("%Y-%m-%d %X",time.localtime(os.path.getmtime(essayPath))),
 			'username':cls.USERNAME, 
 			'password':cls.PASWORD, 

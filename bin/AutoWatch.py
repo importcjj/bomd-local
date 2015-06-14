@@ -63,10 +63,19 @@ class CreatedEventHandler(FileSystemEventHandler):
 
         date = time.strftime("%Y-%m-%d-%X", time.localtime())
 
+        print absolute_file_name
+        print absolute_dir_path
+        
+
         if absolute_file_name.endswith('.html'):
-            print Communicator.Essay2server(absolute_file_name)
+            name = file_name.split('.')
+            file_name = name[0]+'.'+name[3]
+            essayLock = name[1]
+            essayTag = name[2]
+            print Communicator.Essay2server(absolute_file_name, essayLock, essayTag)
             absolute_bak_path = absolute_dir_path+os.sep+"backup"+os.sep+"articles"+os.sep+date+file_name
         else:
+            print file_name
             print "资源上传慢一点哦."
             print Communicator.Resource2server(absolute_file_name)
             absolute_bak_path = absolute_dir_path+os.sep+"backup"+os.sep+"resources"+os.sep+date+file_name
